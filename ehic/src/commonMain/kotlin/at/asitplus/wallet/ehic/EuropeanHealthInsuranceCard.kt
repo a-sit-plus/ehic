@@ -25,7 +25,7 @@ data class EuropeanHealthInsuranceCard(
      * Character string that enables the health care provider to identify the person via international search mask
      * (national format)
      */
-    @SerialName(Attributes.ISSUING_AUTHORITY)
+    @SerialName(Attributes.PREFIX_ISSUING_AUTHORITY)
     val issuingAuthority: IssuingAuthority,
 
     /**

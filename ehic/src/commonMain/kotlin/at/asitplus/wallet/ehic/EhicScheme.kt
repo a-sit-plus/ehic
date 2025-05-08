@@ -14,7 +14,8 @@ object EhicScheme : CredentialScheme {
     override val claimNames: Collection<String> = listOf(
         Attributes.ISSUING_COUNTRY,
         Attributes.SOCIAL_SECURITY_NUMBER,
-        Attributes.ISSUING_AUTHORITY,
+        Attributes.PREFIX_ISSUING_AUTHORITY,
+
         Attributes.DOCUMENT_NUMBER,
         Attributes.ISSUANCE_DATE,
         Attributes.EXPIRY_DATE,
@@ -36,7 +37,24 @@ object EhicScheme : CredentialScheme {
         /**
          * Details of the institution issuing the EHIC, including its identifier and official name.
          */
-        const val ISSUING_AUTHORITY = "issuing_authority"
+        const val PREFIX_ISSUING_AUTHORITY = "issuing_authority"
+
+        /**
+         * The unique identifier of the issuing authority,
+         * typically registered in the EESSI system.
+         */
+        const val ISSUING_AUTHORITY_ID = "$PREFIX_ISSUING_AUTHORITY.id"
+
+        /**
+         * The legal name of the issuing authority responsible for delivering the EHIC,
+         * typically registered in the EESSI system.
+         */
+        const val ISSUING_AUTHORITY_NAME = "$PREFIX_ISSUING_AUTHORITY.name"
+
+        object IssuingAuthority {
+            const val id = "id"
+            const val name = "name"
+        }
 
         /**
          * The unique document identifier assigned by the issuing institution for the EHIC.
