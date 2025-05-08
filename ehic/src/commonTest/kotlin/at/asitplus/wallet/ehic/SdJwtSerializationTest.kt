@@ -20,7 +20,7 @@ class SdJwtSerializationTest : FunSpec({
             oneTimeToken = randomString(),
             ePrescriptionCode = randomString(),
             affiliationCountry = randomString(),
-            issueDate = randomInstant(),
+            issuanceDate = randomInstant(),
             expiryDate = randomInstant(),
             issuingAuthority = randomString(),
             documentNumber = randomString(),

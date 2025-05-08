@@ -9,87 +9,42 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class EuropeanHealthInsuranceCard(
-
     /**
-     * Character string that enables the health care provider to identify the person via international search mask
-     * (national format)
+     * The country where the issuing institution operates, represented as a two-letter country code compliant with ISO 3166-1 alpha-2.
      */
-    @SerialName(Attributes.HEALTH_INSURANCE_ID)
-    val healthInsuranceId: String? = null,
-
-    /**
-     * Character string that enables the health care provider to identify the person via international search mask
-     * (national format)
-     */
-    @SerialName(Attributes.PATIENT_ID)
-    val patientId: String? = null,
-
-    /**
-     * Character string that enables the health care provider to identify the person via international search mask
-     * (national format)
-     */
-    @SerialName(Attributes.TAX_NUMBER)
-    val taxNumber: String? = null,
-
-    /**
-     * Character string that enables the health care provider to identify the person via international search mask
-     * (national format)
-     */
-    @SerialName(Attributes.ONE_TIME_TOKEN)
-    val oneTimeToken: String? = null,
-
-    /**
-     * Character string that enables the health care provider to identify the person via international search mask
-     * (national format). Contains TaskID, Access Code and human readable part separated with a `|` (pipe char)
-     */
-    @SerialName(Attributes.E_PRESCRIPTION_CODE)
-    val ePrescriptionCode: String? = null,
-
-    /**
-     * Alpha-2 country code, as defined in ISO 3166-1, of the user’s country of tax residence of affiliation as
-     * used in the international search mask
-     */
-    @SerialName(Attributes.AFFILIATION_COUNTRY)
-    val affiliationCountry: String? = null,
-
-    /** Date and time when the Health ID attestation was issued. */
-    @SerialName(Attributes.ISSUE_DATE)
-    val issueDate: Instant,
-
-    /** Date and time when the Health ID attestation will expire. */
-    @SerialName(Attributes.EXPIRY_DATE)
-    val expiryDate: Instant,
-
-    /**
-     * Name of the administrative authority that has issued this Health ID attestation, or
-     * the ISO 3166 Alpha-2 country code of the respective Member State if
-     * there is no separate authority authorized to issue health insurance attestations.
-     */
-    @SerialName(Attributes.ISSUING_AUTHORITY)
-    val issuingAuthority: String,
-
-    /** A number for the Health ID attestation, assigned by the Provider. */
-    @SerialName(Attributes.DOCUMENT_NUMBER)
-    val documentNumber: String? = null,
-
-    /** A number assigned by the Health ID attestation Provider for audit control or other purposes. */
-    @SerialName(Attributes.ADMINISTRATIVE_NUMBER)
-    val administrativeNumber: String? = null,
-
-    /** Alpha-2 country code, as defined in ISO 3166-1, of the Health ID attestation Provider's country or territory. */
     @SerialName(Attributes.ISSUING_COUNTRY)
     val issuingCountry: String,
 
     /**
-     * Country subdivision code of the jurisdiction that issued the attestation, as
-     * defined in ISO 3166-2:2020, Clause 8. The first part of the code SHALL
-     * be the same as the value for [issuingCountry].
+     * The personal identification number for social security of the credential subject.
      */
-    @SerialName(Attributes.ISSUING_JURISDICTION)
-    val issuingJurisdiction: String? = null,
+    @SerialName(Attributes.SOCIAL_SECURITY_NUMBER)
+    val socialSecurityNumber: String,
 
-    ) {
-    init {
-        require(healthInsuranceId != null || patientId != null || taxNumber != null || oneTimeToken != null || ePrescriptionCode != null) { "At least one identifier needs to be set" }
-    }
-}
+    /**
+     * Character string that enables the health care provider to identify the person via international search mask
+     * (national format)
+     */
+    @SerialName(Attributes.ISSUING_AUTHORITY)
+    val issuingAuthority: IssuingAuthority,
+
+    /**
+     * The unique document identifier assigned by the issuing institution for the EHIC.
+     */
+    @SerialName(Attributes.DOCUMENT_NUMBER)
+    val documentNumber: String,
+
+    /**
+     * Issuance date of the EHIC credential,
+     * represented as a full-date (YYYY-MM-DD) in accordance with ISO 8601-1 and RFC 3339.
+     */
+    @SerialName(Attributes.ISSUANCE_DATE)
+    val issuanceDate: Instant,
+
+    /**
+     * Expiry date of the administrative validity period of the EHIC credential,
+     * represented as a full-date (YYYY-MM-DD) in accordance with ISO 8601-1 and RFC 3339.
+     */
+    @SerialName(Attributes.EXPIRY_DATE)
+    val expiryDate: Instant,
+)
