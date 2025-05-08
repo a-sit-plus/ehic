@@ -14,19 +14,12 @@ class SdJwtSerializationTest : FunSpec({
 
     test("serialize credential") {
         val credential = EuropeanHealthInsuranceCard(
-            healthInsuranceId = randomString(),
-            patientId = randomString(),
-            taxNumber = randomString(),
-            oneTimeToken = randomString(),
-            ePrescriptionCode = randomString(),
-            affiliationCountry = randomString(),
+            issuingCountry = randomString(),
+            socialSecurityNumber = randomString(),
+            issuingAuthority = IssuingAuthority(randomString(), randomString()),
+            documentNumber = randomString(),
             issuanceDate = randomInstant(),
             expiryDate = randomInstant(),
-            issuingAuthority = randomString(),
-            documentNumber = randomString(),
-            administrativeNumber = randomString(),
-            issuingCountry = randomString(),
-            issuingJurisdiction = randomString(),
         )
         val json = vckJsonSerializer.encodeToString(credential)
         vckJsonSerializer.decodeFromString<EuropeanHealthInsuranceCard>(json) shouldBe credential
@@ -34,5 +27,4 @@ class SdJwtSerializationTest : FunSpec({
         val cbor = vckCborSerializer.encodeToByteArray(credential)
         vckCborSerializer.decodeFromByteArray<EuropeanHealthInsuranceCard>(cbor) shouldBe credential
     }
-
 })

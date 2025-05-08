@@ -1,6 +1,5 @@
 package at.asitplus.wallet.ehic
 
-import at.asitplus.wallet.ehic.Initializer
 import io.kotest.core.config.AbstractProjectConfig
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
