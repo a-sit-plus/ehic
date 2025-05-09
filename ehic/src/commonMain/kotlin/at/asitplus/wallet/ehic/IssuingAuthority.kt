@@ -9,13 +9,13 @@ data class IssuingAuthority(
      * The unique identifier of the issuing authority,
      * typically registered in the EESSI system.
      */
-    @SerialName(EhicScheme.Attributes.IssuingAuthority.id)
+    @SerialName(EhicScheme.Attributes.IssuingAuthority.ID)
     val id: String,
 
     /**
      * The legal name of the issuing authority responsible for delivering the EHIC,
      * typically registered in the EESSI system.
      */
-    @SerialName(EhicScheme.Attributes.IssuingAuthority.name)
+    @SerialName(EhicScheme.Attributes.IssuingAuthority.NAME)
     val name: String,
 )

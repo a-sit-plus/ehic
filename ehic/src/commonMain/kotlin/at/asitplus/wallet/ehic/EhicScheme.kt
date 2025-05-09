@@ -52,8 +52,8 @@ object EhicScheme : CredentialScheme {
         const val ISSUING_AUTHORITY_NAME = "$PREFIX_ISSUING_AUTHORITY.name"
 
         object IssuingAuthority {
-            const val id = "id"
-            const val name = "name"
+            const val ID = "id"
+            const val NAME = "name"
         }
 
         /**
