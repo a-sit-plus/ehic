@@ -4,6 +4,8 @@ import at.asitplus.wallet.lib.data.vckJsonSerializer
 import at.asitplus.wallet.lib.iso.vckCborSerializer
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
@@ -14,19 +16,12 @@ class SdJwtSerializationTest : FunSpec({
 
     test("serialize credential") {
         val credential = EuropeanHealthInsuranceCard(
-            healthInsuranceId = randomString(),
-            patientId = randomString(),
-            taxNumber = randomString(),
-            oneTimeToken = randomString(),
-            ePrescriptionCode = randomString(),
-            affiliationCountry = randomString(),
-            issueDate = randomInstant(),
-            expiryDate = randomInstant(),
-            issuingAuthority = randomString(),
-            documentNumber = randomString(),
-            administrativeNumber = randomString(),
             issuingCountry = randomString(),
-            issuingJurisdiction = randomString(),
+            socialSecurityNumber = randomString(),
+            issuingAuthority = IssuingAuthority(randomString(), randomString()),
+            documentNumber = randomString(),
+            issuanceDate = randomInstant().toLocalDateTime(TimeZone.UTC).date,
+            expiryDate = randomInstant().toLocalDateTime(TimeZone.UTC).date,
         )
         val json = vckJsonSerializer.encodeToString(credential)
         vckJsonSerializer.decodeFromString<EuropeanHealthInsuranceCard>(json) shouldBe credential
@@ -34,5 +29,4 @@ class SdJwtSerializationTest : FunSpec({
         val cbor = vckCborSerializer.encodeToByteArray(credential)
         vckCborSerializer.decodeFromByteArray<EuropeanHealthInsuranceCard>(cbor) shouldBe credential
     }
-
 })
