@@ -28,7 +28,7 @@ kotlin {
     }
 }
 
-val javadocJar = setupDokka(baseUrl = "https://github.com/a-sit-plus/eprescription/tree/main/")
+val javadocJar = setupDokka(baseUrl = "https://github.com/a-sit-plus/ehic/tree/main/")
 
 publishing {
     publications {
@@ -62,7 +62,7 @@ publishing {
         create<MavenPublication>("relocation") {
             pom {
                 // Old artifact coordinates
-                artifactId = "eprescription"
+                artifactId = "ehic"
                 version = artifactVersion
 
                 distributionManagement {

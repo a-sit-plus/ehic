@@ -13,6 +13,15 @@ of [VC-K](https://github.com/a-sit-plus/vck).
 
 Be sure to call `at.asitplus.wallet.ehic.Initializer.initWithVCK` first thing in your application.
 
+Implemented attributes:
+ - `social_security_number` (String)
+ - `issuing_country` (String)
+ - `issuing_authority.id` (String)
+ - `issuing_authority.name` (String)
+ - `document_number` (String)
+ - `issuance_date` (LocalDate)
+ - `expiry_date` (LocalDate)
+
 ## Changelog
 
 Release 1.0.0:
