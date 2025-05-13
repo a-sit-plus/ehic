@@ -2,7 +2,7 @@ package at.asitplus.wallet.ehic
 
 
 import at.asitplus.wallet.ehic.EhicScheme.Attributes
-import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -39,12 +39,12 @@ data class EuropeanHealthInsuranceCard(
      * represented as a full-date (YYYY-MM-DD) in accordance with ISO 8601-1 and RFC 3339.
      */
     @SerialName(Attributes.ISSUANCE_DATE)
-    val issuanceDate: Instant,
+    val issuanceDate: LocalDate,
 
     /**
      * Expiry date of the administrative validity period of the EHIC credential,
      * represented as a full-date (YYYY-MM-DD) in accordance with ISO 8601-1 and RFC 3339.
      */
     @SerialName(Attributes.EXPIRY_DATE)
-    val expiryDate: Instant,
+    val expiryDate: LocalDate,
 )
