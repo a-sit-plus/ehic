@@ -82,7 +82,7 @@ object EhicScheme : CredentialScheme {
         /**
          * Competent institution.
          */
-        const val PREFIX_AUTHENTIC_SOURCE = "AUTHENTIC_SOURCE"
+        const val PREFIX_AUTHENTIC_SOURCE = "authentic_source"
 
         /**
          * Identifier of the competent insitution as registered in the EESSI Institution Repository.
