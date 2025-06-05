@@ -4,8 +4,6 @@ import at.asitplus.wallet.lib.data.vckJsonSerializer
 import at.asitplus.wallet.lib.iso.vckCborSerializer
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
@@ -18,15 +16,23 @@ class SdJwtSerializationTest : FunSpec({
         val credential = EuropeanHealthInsuranceCard(
             issuingCountry = randomString(),
             socialSecurityNumber = randomString(),
+            personalAdministrativeNumber = randomString(),
             issuingAuthority = IssuingAuthority(randomString(), randomString()),
+            authenticSource = AuthenticSource(randomString(), randomString()),
             documentNumber = randomString(),
-            issuanceDate = randomInstant().toLocalDateTime(TimeZone.UTC).date,
-            expiryDate = randomInstant().toLocalDateTime(TimeZone.UTC).date,
+            issuanceDate = randomLocalDate(),
+            expiryDate = randomLocalDate(),
+            dateOfIssuance = randomLocalDate(),
+            dateofExpiry = randomLocalDate(),
+            startingDate = randomLocalDate(),
+            endingDate = randomLocalDate(),
         )
-        val json = vckJsonSerializer.encodeToString(credential)
-        vckJsonSerializer.decodeFromString<EuropeanHealthInsuranceCard>(json) shouldBe credential
+        vckJsonSerializer.decodeFromString<EuropeanHealthInsuranceCard>(
+            vckJsonSerializer.encodeToString<EuropeanHealthInsuranceCard>(credential)
+        ) shouldBe credential
 
-        val cbor = vckCborSerializer.encodeToByteArray(credential)
-        vckCborSerializer.decodeFromByteArray<EuropeanHealthInsuranceCard>(cbor) shouldBe credential
+        vckCborSerializer.decodeFromByteArray<EuropeanHealthInsuranceCard>(
+            vckCborSerializer.encodeToByteArray<EuropeanHealthInsuranceCard>(credential)
+        ) shouldBe credential
     }
 })

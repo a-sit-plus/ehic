@@ -14,15 +14,35 @@ of [VC-K](https://github.com/a-sit-plus/vck).
 Be sure to call `at.asitplus.wallet.ehic.Initializer.initWithVCK` first thing in your application.
 
 Implemented attributes:
- - `social_security_number` (String)
+ - `social_security_number` (String, deprecated)
+ - `personal_administrative_number` (String)
  - `issuing_country` (String)
  - `issuing_authority.id` (String)
  - `issuing_authority.name` (String)
+ - `authentic_source.id` (String)
+ - `authentic_source.name` (String)
  - `document_number` (String)
- - `issuance_date` (LocalDate)
- - `expiry_date` (LocalDate)
+ - `issuance_date` (LocalDate, deprecated)
+ - `date_of_issuance` (LocalDate)
+ - `expiry_date` (LocalDate, deprecated)
+ - `date_of_expiry` (LocalDate)
+ - `starting_date` (LocalDate)
+ - `ending_date` (LocalDate)
 
 ## Changelog
+
+Release 1.1.0:
+ - Add new attributes:
+   - `personal_administrative_number`
+   - `authentic_source.id`, `authentic_source.name`
+   - `date_of_isusance`
+   - `date_of_expiry`
+   - `starting_date`
+   - `ending_date`
+ - Deprecate attributes removed from schema:
+   - `social_security_number`
+   - `issuance_date`
+   - `expiry_date`
 
 Release 1.0.0:
  - Initial release
