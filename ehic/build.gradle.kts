@@ -22,7 +22,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api("at.asitplus.wallet:vck:5.4.2")
+                api("at.asitplus.wallet:vck:5.6.5")
             }
         }
     }
@@ -35,8 +35,8 @@ publishing {
         withType<MavenPublication> {
             if (this.name != "relocation") artifact(javadocJar)
             pom {
-                name.set("Health ID Attestation")
-                description.set("Use data representing Health ID as a SD-JWT credential, using VC-K")
+                name.set("European Health Identity Credential")
+                description.set("Use data representing EHIC as a SD-JWT credential, using VC-K")
                 url.set("https://github.com/a-sit-plus/ehic/")
                 licenses {
                     license {
@@ -58,24 +58,6 @@ publishing {
                 }
             }
         }
-        //REMOVE ME AFTER RELOCATED ARTIFACT HAS BEEN PUBLISHED
-        create<MavenPublication>("relocation") {
-            pom {
-                // Old artifact coordinates
-                artifactId = "ehic"
-                version = artifactVersion
-
-                distributionManagement {
-                    relocation {
-                        // New artifact coordinates
-                        artifactId = "ehic"
-                        version = artifactVersion
-                        message = "artifactId have been changed"
-                    }
-                }
-            }
-        }
-
     }
     repositories {
         mavenLocal {
