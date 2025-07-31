@@ -2,7 +2,6 @@ package at.asitplus.wallet.ehic
 
 
 import at.asitplus.wallet.ehic.EhicScheme.Attributes
-import com.ionspin.kotlin.bignum.Endianness
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
