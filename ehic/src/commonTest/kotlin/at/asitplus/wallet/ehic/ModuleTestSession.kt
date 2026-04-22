@@ -1,13 +1,11 @@
-package io.kotest.provided
+package at.asitplus.wallet.ehic
 
+import de.infix.testBalloon.framework.core.TestSession
 import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import kotlin.random.Random
-import at.asitplus.test.XmlReportingProjectConfig
-import at.asitplus.wallet.ehic.Initializer
 
-/** Wires KMP JUnit XML reporting */
-class ProjectConfig : XmlReportingProjectConfig() {
+class ModuleTestSession : TestSession() {
     init {
         Initializer.initWithVCK()
     }

@@ -2,16 +2,14 @@ package at.asitplus.wallet.ehic
 
 import at.asitplus.signum.indispensable.cosef.io.coseCompliantSerializer
 import at.asitplus.wallet.lib.data.vckJsonSerializer
-import io.kotest.core.spec.style.FunSpec
+import de.infix.testBalloon.framework.core.testSuite
 import io.kotest.matchers.shouldBe
-import io.kotest.provided.randomLocalDate
-import io.kotest.provided.randomString
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
 
 @OptIn(ExperimentalSerializationApi::class)
-class SdJwtSerializationTest : FunSpec({
+val SdJwtSerializationTest by testSuite {
 
     test("serialize credential") {
         val credential = EuropeanHealthInsuranceCard(
@@ -36,4 +34,4 @@ class SdJwtSerializationTest : FunSpec({
             coseCompliantSerializer.encodeToByteArray<EuropeanHealthInsuranceCard>(credential)
         ) shouldBe credential
     }
-})
+}
